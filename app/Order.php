@@ -21,7 +21,7 @@ class Order extends Model
      *
      * @return mixed
      */
-    public static function getListData()
+    public static function getList()
     {
         $orders = DB::table("orders")
                     ->join('users', 'orders.user_id', '=', 'users.id')

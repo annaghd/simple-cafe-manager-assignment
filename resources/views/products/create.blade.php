@@ -10,8 +10,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    @if (!empty($product->id))
-                        {!! Form::model($product, array('route' => ['products.update', $product->id],'method'=>'PATCH','id' => 'user-update')) !!}
+                    @if (!empty($data->id))
+                        {!! Form::model($data, array('route' => ['products.update', $product->id],'method'=>'PATCH','id' => 'user-update')) !!}
                     @else
                         {!! Form::open(array('route' => 'products.store','method'=>'POST','id' => 'user-create')) !!}
                     @endif

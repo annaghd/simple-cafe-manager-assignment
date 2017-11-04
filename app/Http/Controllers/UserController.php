@@ -15,20 +15,32 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * view name
+     * @var string
+     */
+    protected $view = "users";
 
-    public function getList(Request $request)
-    {
-        $request->user()->authorizeRoles('manager');
-        $users = User::getList();
-        $roles = [
-            "is_manager" => $request->user()->authorizeRoles(['manager']),
-            "is_waiter"  => $request->user()->authorizeRoles(['waiter']),
-        ];
 
-        return view('users.index', compact('users', 'roles'))
-            ->with('i', ($request->input('page', 1) - 1) * 30);
-    }
+    /**
+     * model class
+     * @var User
+     */
+    protected $model_class = User::class;
 
+    /**
+     * user  role
+     * @var string
+     */
+    protected $role = "manager";
+
+    /**
+     * function for getting row data
+     * @var Request $reqiest
+     * @var mixed $id
+     *
+     * @return resource
+     */
     public function getOne(Request $request, $id = null)
     {
         $request->user()->authorizeRoles('manager');
@@ -43,6 +55,13 @@ class UserController extends Controller
         return view('users.create', compact('user', 'roles', 'roles_list'));
     }
 
+    /**
+     * function for storing  data
+     * @var Request $reqiest
+     * @var mixed $id
+     *
+     * @return resource
+     */
     public function store(Request $request, $id = null)
     {
         $request->user()->authorizeRoles('manager');

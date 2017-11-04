@@ -26,7 +26,7 @@
                                 <th style="width: 10%;">Edit</th>
                                 </thead>
                                 <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($data as $user)
                                     <tr>
                                         <td>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
@@ -44,7 +44,7 @@
                                 </tbody>
                             </table>
                             <div class="clearfix"></div>
-                            {!! $users->links() !!}
+                            {!! $data->links() !!}
                         </div>
                     </div>
                 </div>

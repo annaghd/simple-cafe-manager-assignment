@@ -23,7 +23,7 @@
                                 <th style="width: 20%;">Edit</th>
                                 </thead>
                                 <tbody>
-                                @foreach ($orders as $order)
+                                @foreach ($data as $order)
                                     <tr>
                                         <td>{{$order->id}}</td>
                                         <td>{{$order->user_name}}</td>

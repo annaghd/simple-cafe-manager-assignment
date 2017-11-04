@@ -20,19 +20,32 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    /**
+     * view name
+     * @var string
+     */
+    protected $view = "orders";
 
-    public function getList(Request $request)
-    {
-        $orders = Order::getListData();
-        $roles = [
-            "is_manager" => $request->user()->authorizeRoles(['manager']),
-            "is_waiter"  => $request->user()->authorizeRoles(['waiter']),
-        ];
 
-        return view('orders.index', compact('orders', 'roles'))
-            ->with('i', ($request->input('page', 1) - 1) * 30);
-    }
+    /**
+     * model class
+     * @var Order
+     */
+    protected $model_class = Order::class;
 
+    /**
+     * user  role
+     * @var string
+     */
+    protected $role = "waiter";
+
+    /**
+     * function for getting row data
+     * @var Request $reqiest
+     * @var mixed $id
+     *
+     * @return resource
+     */
     public function getOne(Request $request, $id = null)
     {
         $input = $request->all();
@@ -52,7 +65,13 @@ class OrderController extends Controller
 
         return view('orders.create', compact('order', 'products', 'statuses', 'roles', 'table_id', 'order_products', 'user_table_id'));
     }
-
+    /**
+     * function for storing  data
+     * @var Request $reqiest
+     * @var mixed $id
+     *
+     * @return resource
+     */
     public function store(Request $request, $id = null)
     {
         $input = $request->all();

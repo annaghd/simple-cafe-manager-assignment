@@ -17,7 +17,25 @@ use Illuminate\Support\Facades\DB;
 
 class AssignController extends Controller
 {
+    /**
+     * view name
+     * @var string
+     */
+    protected $view = "assign";
 
+    /**
+     * model class
+     * @var UserTable
+     */
+    protected $model_class = UserTable::class;
+
+
+    /**
+     * function for getting list data
+     * @var Request $reqiest
+     *
+     * @return resource
+     */
     public function getList(Request $request)
     {
         $assignments = UserTable::getListData($request->user()->authorizeRoles(['waiter']));
@@ -30,7 +48,13 @@ class AssignController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * 30);
     }
 
-
+    /**
+     * function for getting row data
+     * @var Request $reqiest
+     * @var mixed $id
+     *
+     * @return resource
+     */
     public function getOne(Request $request, $id = null)
     {
         $request->user()->authorizeRoles('manager');
@@ -54,6 +78,13 @@ class AssignController extends Controller
         return view('assign.create', compact('assignment', 'roles', 'users', 'tables', 'statuses'));
     }
 
+    /**
+     * function for storing  data
+     * @var Request $reqiest
+     * @var mixed $id
+     *
+     * @return resource
+     */
     public function store(Request $request, $id = null)
     {
         $request->user()->authorizeRoles('manager');

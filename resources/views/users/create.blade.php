@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="slug">User password:</label>
-                                    {!! Form::password('password', null, array('placeholder' => 'User password','class' => 'form-control')) !!}
+                                    {!! Form::text('password', null, array('placeholder' => 'User password','class' => 'form-control')) !!}
                                 </div>
                                 <div class="form-group">
                                     <label for="title">User role:</label>

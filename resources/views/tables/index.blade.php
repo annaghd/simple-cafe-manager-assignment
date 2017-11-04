@@ -24,7 +24,7 @@
                                 <th style="width: 30%;">Edit</th>
                                 </thead>
                                 <tbody>
-                                @foreach ($tables as $table)
+                                @foreach ($data as $table)
                                     <tr>
                                         <td>{{$table->id}}</td>
                                         <td>{{$table->number}}</td>

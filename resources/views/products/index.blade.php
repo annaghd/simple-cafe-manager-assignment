@@ -25,7 +25,7 @@
                                 <th style="width: 30%;">Edit</th>
                                 </thead>
                                 <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($data as $product)
                                     <tr>
                                         <td>{{$product->id}}</td>
                                         <td>{{$product->name}}</td>
