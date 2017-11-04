@@ -1,4 +1,4 @@
-#Simple Cafe Manager Assignment
+# Simple Cafe Manager Assignment
 
 ###### Before running application create `cafe_manager` database
 
